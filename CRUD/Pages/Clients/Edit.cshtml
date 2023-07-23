@@ -1,0 +1,48 @@
+﻿@page
+@model CRUD.Pages.Clients.EditModel
+@{
+}
+<br />
+<h2>New Client</h2>
+@if (Model.errorMessage.Length > 0)
+{
+	<div class="alert alert-warning alert-dismissible fade-show" role="alert">
+		<strong>@Model.errorMessage</strong>
+		<button type="button" class="btn-close" data-bs-dismiss="alert" area-label="close"></button>
+	</div>
+}
+<form method="post">
+	<input type="hidden" name="id" value="@Model.clientInfo.id" />
+	<div class="row mb-3">
+		<label class="col-sm-6">Name</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" name="name" value="@Model.clientInfo.name" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-6">Email</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" name="email" value="@Model.clientInfo.email" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-6">Phone Number</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" name="phone" value="@Model.clientInfo.phone" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-6">Address</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" name="address" value="@Model.clientInfo.address" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<div class="offset-sm-3 col-sm-3 d-grid">
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</div>
+		<div class="offset-sm-3 col-sm-3 d-grid">
+			<a class="btn btn-outline-primary" href="/" role="button">Cancel</a>
+		</div>
+	</div>
+</form>

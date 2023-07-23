@@ -1,0 +1,28 @@
+﻿@page
+@using System.Data.SqlClient;
+@{
+	String successMessage = "";
+	try
+	{
+		String id = Request.Query["ID"];
+		String connectionString = "Data Source=LAPTOP-A01CF880;Initial Catalog=crud;Integrated Security=True";
+		using (SqlConnection connection = new SqlConnection(connectionString))
+		{
+			connection.Open();
+
+			String sql = "DELETE FROM clients WHERE id=@id";
+
+			using(SqlCommand command=new SqlCommand(sql, connection))
+			{
+				command.Parameters.AddWithValue("@id", id);
+				command.ExecuteNonQuery();
+			}
+		}
+
+	}catch(Exception ex)
+	{
+
+	}
+	successMessage = "Clients Info deleted Successfully";
+	Response.Redirect("/Clients/Index?successMessage="+successMessage);
+}
